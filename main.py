@@ -60,7 +60,7 @@ def change_label(ind_app, percent=0, set_time=set_time, **kwargs):
     label = progress(percent) if not over_time else over_time_label[0:over_time_label_index]
     ind_app.set_label(label, '')
     
-    over_time = True if percent > 100 else False,
+    over_time = percent > 100
     over_time_label_index = over_time_label_index + 1 if over_time_label_index <= len(over_time_label) else 0
     
     GLib.timeout_add(1000, lambda: change_label(ind_app, percent, set_time, over_time=over_time, over_time_label_index=over_time_label_index))
